@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.miPortafolio.trc.TrcApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 53.776 s - in com.miPortafolio.trc.TrcApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.181 s - in com.miPortafolio.trc.TrcApplicationTests

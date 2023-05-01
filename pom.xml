@@ -51,7 +51,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -66,9 +65,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -85,5 +82,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

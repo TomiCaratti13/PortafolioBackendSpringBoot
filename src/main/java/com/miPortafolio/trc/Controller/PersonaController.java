@@ -16,13 +16,13 @@ import com.miPortafolio.trc.Service.PersonaService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("/personas")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://tomascaratti-portafolio.web.app")
 public class PersonaController {
     @Autowired
     PersonaService personaService;
@@ -52,7 +52,7 @@ public class PersonaController {
         return new ResponseEntity(new Mensaje("Persona eliminada"), HttpStatus.OK);
     }*/
     
-    @PostMapping("/create")
+    @PostMapping("/crear")
     public ResponseEntity<?> create(@RequestBody DtoPersona dtopersona){
         if(personaService.existsByNombre(dtopersona.getNombre()))
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);

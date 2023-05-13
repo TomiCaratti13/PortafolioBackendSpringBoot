@@ -44,14 +44,19 @@ public class HabilidadControllet {
     }
     
     @PostMapping("/crear")
-    public ResponseEntity<?> create(@RequestBody DtoHabilidad dtohabilidad){      
-        if(StringUtils.isBlank(dtohabilidad.getNombreHys()))
-            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> create(@RequestBody DtoHabilidad dtohabilidad){
         if(habilidadServ.existsByNombreHys(dtohabilidad.getNombreHys()))
             return new ResponseEntity(new Mensaje("Esa habilidad existe"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtohabilidad.getNombreHys()))
+            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtohabilidad.getIcono()))
+            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtohabilidad.getPorcentaje()))
+            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         
         HabilidadEntity habilidadEntity = new HabilidadEntity(
                 dtohabilidad.getNombreHys(),
+                dtohabilidad.getIcono(),
                 dtohabilidad.getPorcentaje());
         habilidadServ.save(habilidadEntity);
         
@@ -75,9 +80,14 @@ public class HabilidadControllet {
             return new ResponseEntity(new Mensaje("Esa habilidad ya existe"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtohabilidad.getNombreHys()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtohabilidad.getIcono()))
+            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtohabilidad.getPorcentaje()))
+            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         
         HabilidadEntity habilidadEntity = habilidadServ.getOne(id).get();
         habilidadEntity.setNombreHys(dtohabilidad.getNombreHys());
+        habilidadEntity.setIcono(dtohabilidad.getIcono());
         habilidadEntity.setPorcentaje(dtohabilidad.getPorcentaje());
         
         habilidadServ.save(habilidadEntity);

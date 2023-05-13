@@ -34,12 +34,20 @@ public class EducacionController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<EducacionEntity> getById(@PathVariable("id") int id){
+        if(!educacionServ.existsById(id))
+            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
+        EducacionEntity educacion = educacionServ.getOne(id).get();
+        return new ResponseEntity(educacion, HttpStatus.OK);
+    }
+    
     @PostMapping("/crear")
     public ResponseEntity<?> create(@RequestBody DtoEducacion dtoeducacion){      
         if(StringUtils.isBlank(dtoeducacion.getTituloEdu()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(educacionServ.existsByTituloEdu(dtoeducacion.getTituloEdu()))
-            return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa educacion existe"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getInstiEdu()))
             return new ResponseEntity(new Mensaje("El Instituto es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getFechaEdu()))
@@ -54,7 +62,7 @@ public class EducacionController {
                 dtoeducacion.getDescripcionEdu());
         educacionServ.save(educacionEntity);
         
-        return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Educacion agregada"), HttpStatus.OK);
     }
     
     @DeleteMapping("/borrar/{id}")
@@ -63,7 +71,7 @@ public class EducacionController {
             return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
         }
         educacionServ.delete(id);
-        return new ResponseEntity(new Mensaje("Experiencia eliminada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
     }
     
     @PutMapping("/editar/{id}")
@@ -71,7 +79,7 @@ public class EducacionController {
         if(!educacionServ.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
         if(educacionServ.existsByTituloEdu(dtoeducacion.getTituloEdu()) && educacionServ.getByTituloEdu(dtoeducacion.getTituloEdu()).get().getId() != id)
-            return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa educacion ya existe"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getTituloEdu()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getInstiEdu()))
@@ -88,6 +96,6 @@ public class EducacionController {
         educacionEntity.setDescripcionEdu((dtoeducacion.getDescripcionEdu()));
         
         educacionServ.save(educacionEntity);
-        return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Educacion actualizada"), HttpStatus.OK);
     }
 }

@@ -22,6 +22,8 @@ public class PersonaEntity {
     @Size(min = 1, max = 50, message = "No cumple con la longitud")
     private String apellido;
     @NotNull
+    private String titulo;
+    @NotNull
     private String descripcion;
     @NotNull
     private String imgPerfil;
@@ -31,9 +33,10 @@ public class PersonaEntity {
     public PersonaEntity() {
     }
 
-    public PersonaEntity(String nombre, String apellido, String descripcion, String imgPerfil, String imgBanner) {
+    public PersonaEntity(String nombre, String apellido, String titulo, String descripcion, String imgPerfil, String imgBanner) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.titulo = titulo;
         this.descripcion = descripcion;
         this.imgPerfil = imgPerfil;
         this.imgBanner = imgBanner;
@@ -61,6 +64,14 @@ public class PersonaEntity {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+    
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescripcion() {

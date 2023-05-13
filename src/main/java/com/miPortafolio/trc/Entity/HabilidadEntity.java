@@ -12,13 +12,15 @@ public class HabilidadEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombreHys;
+    private String icono;
     private int porcentaje;
 
     public HabilidadEntity() {
     }
 
-    public HabilidadEntity(String nombreHys, int porcentaje) {
+    public HabilidadEntity(String nombreHys, String icono, int porcentaje) {
         this.nombreHys = nombreHys;
+        this.icono = icono;
         this.porcentaje = porcentaje;
     }
 
@@ -38,6 +40,14 @@ public class HabilidadEntity {
         this.nombreHys = nombreHys;
     }
 
+    public String getIcono() {
+        return icono;
+    }
+
+    public void setIcono(String icono) {
+        this.icono = icono;
+    }
+    
     public int getPorcentaje() {
         return porcentaje;
     }

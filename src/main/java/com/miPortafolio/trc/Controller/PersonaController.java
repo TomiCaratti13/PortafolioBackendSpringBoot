@@ -60,6 +60,8 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getApellido()))
             return new ResponseEntity(new Mensaje("El apellido es obligatorio"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtopersona.getTitulo()))
+            return new ResponseEntity(new Mensaje("El apellido es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getDescripcion()))
             return new ResponseEntity(new Mensaje("La descripcion es obligatoria"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getImgPerfil()))
@@ -68,6 +70,7 @@ public class PersonaController {
         PersonaEntity educacion = new PersonaEntity(
                 dtopersona.getNombre(),
                 dtopersona.getApellido(),
+                dtopersona.getTitulo(),
                 dtopersona.getDescripcion(),
                 dtopersona.getImgPerfil(),
                 dtopersona.getImgBanner());
@@ -86,6 +89,8 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getApellido()))
             return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtopersona.getTitulo()))
+            return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getDescripcion()))
             return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getImgPerfil()))
@@ -96,6 +101,7 @@ public class PersonaController {
         PersonaEntity personaEntity = personaService.getOne(id).get();
         personaEntity.setNombre(dtopersona.getNombre());
         personaEntity.setApellido(dtopersona.getApellido());
+        personaEntity.setTitulo(dtopersona.getTitulo());
         personaEntity.setDescripcion(dtopersona.getDescripcion());
         personaEntity.setImgPerfil(dtopersona.getImgPerfil());
         personaEntity.setImgBanner(dtopersona.getImgBanner());

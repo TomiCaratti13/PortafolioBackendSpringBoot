@@ -14,15 +14,17 @@ public class EducacionEntity {
     private String tituloEdu;
     private String instiEdu;
     private String fechaEdu;
+    private String imgEdu;
     private String descripcionEdu;
 
     public EducacionEntity() {
     }
 
-    public EducacionEntity(String tituloEdu, String instiEdu, String fechaEdu, String descripcionEdu) {
+    public EducacionEntity(String tituloEdu, String instiEdu, String fechaEdu, String imgEdu, String descripcionEdu) {
         this.tituloEdu = tituloEdu;
         this.instiEdu = instiEdu;
         this.fechaEdu = fechaEdu;
+        this.imgEdu = imgEdu;
         this.descripcionEdu = descripcionEdu;
     }
 
@@ -56,6 +58,14 @@ public class EducacionEntity {
 
     public void setFechaEdu(String fechaEdu) {
         this.fechaEdu = fechaEdu;
+    }
+    
+    public String getImgEdu() {
+        return imgEdu;
+    }
+
+    public void setImgEdu(String imgEdu) {
+        this.imgEdu = imgEdu;
     }
 
     public String getDescripcionEdu() {

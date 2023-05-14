@@ -12,15 +12,18 @@ public class DtoEducacion {
     @NotBlank
     private String fechaEdu;
     @NotBlank
+    private String imgEdu;
+    @NotBlank
     private String descripcionEdu;
 
     public DtoEducacion() {
     }
 
-    public DtoEducacion(String tituloEdu, String instiEdu, String fechaEdu, String descripcionEdu) {
+    public DtoEducacion(String tituloEdu, String instiEdu, String fechaEdu, String imgEdu, String descripcionEdu) {
         this.tituloEdu = tituloEdu;
         this.instiEdu = instiEdu;
         this.fechaEdu = fechaEdu;
+        this.imgEdu = imgEdu;
         this.descripcionEdu = descripcionEdu;
     }
 
@@ -46,6 +49,14 @@ public class DtoEducacion {
 
     public void setFechaEdu(String fechaEdu) {
         this.fechaEdu = fechaEdu;
+    }
+    
+    public String getImgEdu() {
+        return imgEdu;
+    }
+
+    public void setImgEdu(String imgEdu) {
+        this.imgEdu = imgEdu;
     }
 
     public String getDescripcionEdu() {

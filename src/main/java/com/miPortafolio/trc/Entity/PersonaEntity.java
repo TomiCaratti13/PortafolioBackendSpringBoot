@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 public class PersonaEntity {
@@ -29,17 +27,20 @@ public class PersonaEntity {
     private String imgPerfil;
     @NotNull
     private String imgBanner;
+    @NotNull
+    private String curriculum;
 
     public PersonaEntity() {
     }
 
-    public PersonaEntity(String nombre, String apellido, String titulo, String descripcion, String imgPerfil, String imgBanner) {
+    public PersonaEntity(String nombre, String apellido, String titulo, String descripcion, String imgPerfil, String imgBanner, String curriculum) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.imgPerfil = imgPerfil;
         this.imgBanner = imgBanner;
+        this.curriculum = curriculum;
     }
 
     public int getId() {
@@ -96,6 +97,14 @@ public class PersonaEntity {
 
     public void setImgBanner(String imgBanner) {
         this.imgBanner = imgBanner;
+    }
+    
+    public String getCurriculum() {
+        return curriculum;
+    }
+
+    public void setCurriculum(String curriculum) {
+        this.curriculum = curriculum;
     }
     
 }

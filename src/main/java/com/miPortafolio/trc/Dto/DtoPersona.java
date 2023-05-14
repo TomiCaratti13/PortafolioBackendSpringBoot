@@ -18,17 +18,20 @@ public class DtoPersona {
     private String imgPerfil;
     @NotBlank
     private String imgBanner;
+    @NotBlank
+    private String curriculum;
 
     public DtoPersona() {
     }
 
-    public DtoPersona(String nombre, String apellido, String titulo, String descripcion, String imgPerfil, String imgBanner) {
+    public DtoPersona(String nombre, String apellido, String titulo, String descripcion, String imgPerfil, String imgBanner, String curriculum) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.imgPerfil = imgPerfil;
         this.imgBanner = imgBanner;
+        this.curriculum = curriculum;
     }
 
     public String getNombre() {
@@ -77,6 +80,14 @@ public class DtoPersona {
 
     public void setImgBanner(String imgBanner) {
         this.imgBanner = imgBanner;
+    }
+    
+    public String getCurriculum() {
+        return curriculum;
+    }
+
+    public void setCurriculum(String curriculum) {
+        this.curriculum = curriculum;
     }
 
 }

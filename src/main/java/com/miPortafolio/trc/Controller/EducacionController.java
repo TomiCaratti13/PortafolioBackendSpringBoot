@@ -52,6 +52,8 @@ public class EducacionController {
             return new ResponseEntity(new Mensaje("El Instituto es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getFechaEdu()))
             return new ResponseEntity(new Mensaje("La fecha es obligatoria"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtoeducacion.getImgEdu()))
+            return new ResponseEntity(new Mensaje("La fecha es obligatoria"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getDescripcionEdu()))
             return new ResponseEntity(new Mensaje("La descripcion es obligatoria"), HttpStatus.BAD_REQUEST);
         
@@ -59,6 +61,7 @@ public class EducacionController {
                 dtoeducacion.getTituloEdu(),
                 dtoeducacion.getInstiEdu(),
                 dtoeducacion.getFechaEdu(),
+                dtoeducacion.getImgEdu(),
                 dtoeducacion.getDescripcionEdu());
         educacionServ.save(educacionEntity);
         
@@ -86,6 +89,8 @@ public class EducacionController {
             return new ResponseEntity(new Mensaje("El Instituto es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getFechaEdu()))
             return new ResponseEntity(new Mensaje("La fecha es obligatoria"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtoeducacion.getImgEdu()))
+            return new ResponseEntity(new Mensaje("La fecha es obligatoria"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoeducacion.getDescripcionEdu()))
             return new ResponseEntity(new Mensaje("La descripcion es obligatoria"), HttpStatus.BAD_REQUEST);
         
@@ -93,6 +98,7 @@ public class EducacionController {
         educacionEntity.setTituloEdu(dtoeducacion.getTituloEdu());
         educacionEntity.setInstiEdu(dtoeducacion.getInstiEdu());
         educacionEntity.setFechaEdu(dtoeducacion.getFechaEdu());
+        educacionEntity.setImgEdu(dtoeducacion.getImgEdu());
         educacionEntity.setDescripcionEdu((dtoeducacion.getDescripcionEdu()));
         
         educacionServ.save(educacionEntity);

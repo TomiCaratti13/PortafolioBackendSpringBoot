@@ -49,12 +49,12 @@ public class HabilidadControllet {
             return new ResponseEntity(new Mensaje("Esa habilidad existe"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtohabilidad.getNombreHys()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(dtohabilidad.getIcono()))
+        if(StringUtils.isBlank(dtohabilidad.getIconoHys()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         
         HabilidadEntity habilidadEntity = new HabilidadEntity(
                 dtohabilidad.getNombreHys(),
-                dtohabilidad.getIcono(),
+                dtohabilidad.getIconoHys(),
                 dtohabilidad.getPorcentaje());
         habilidadServ.save(habilidadEntity);
         
@@ -78,12 +78,12 @@ public class HabilidadControllet {
             return new ResponseEntity(new Mensaje("Esa habilidad ya existe"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtohabilidad.getNombreHys()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(dtohabilidad.getIcono()))
+        if(StringUtils.isBlank(dtohabilidad.getIconoHys()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         
         HabilidadEntity habilidadEntity = habilidadServ.getOne(id).get();
         habilidadEntity.setNombreHys(dtohabilidad.getNombreHys());
-        habilidadEntity.setIcono(dtohabilidad.getIcono());
+        habilidadEntity.setIconoHys(dtohabilidad.getIconoHys());
         habilidadEntity.setPorcentaje(dtohabilidad.getPorcentaje());
         
         habilidadServ.save(habilidadEntity);

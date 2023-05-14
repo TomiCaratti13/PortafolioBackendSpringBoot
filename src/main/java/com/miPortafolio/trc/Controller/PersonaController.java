@@ -66,6 +66,8 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("La descripcion es obligatoria"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getImgPerfil()))
             return new ResponseEntity(new Mensaje("La foto de perfil es obligatoria"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(dtopersona.getCurriculum()))
+            return new ResponseEntity(new Mensaje("La foto de perfil es obligatoria"), HttpStatus.BAD_REQUEST);
         
         PersonaEntity educacion = new PersonaEntity(
                 dtopersona.getNombre(),
@@ -73,13 +75,14 @@ public class PersonaController {
                 dtopersona.getTitulo(),
                 dtopersona.getDescripcion(),
                 dtopersona.getImgPerfil(),
-                dtopersona.getImgBanner());
+                dtopersona.getImgBanner(),
+                dtopersona.getCurriculum());
         personaService.save(educacion);
         return new ResponseEntity(new Mensaje("PersonaEntity creada"), HttpStatus.OK);
                 
     }
     
-    @PutMapping("/update/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoPersona dtopersona){
         if(!personaService.existsById(id))
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
@@ -95,7 +98,7 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtopersona.getImgPerfil()))
             return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(dtopersona.getImgBanner()))
+        if(StringUtils.isBlank(dtopersona.getCurriculum()))
             return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         
         PersonaEntity personaEntity = personaService.getOne(id).get();
@@ -105,6 +108,7 @@ public class PersonaController {
         personaEntity.setDescripcion(dtopersona.getDescripcion());
         personaEntity.setImgPerfil(dtopersona.getImgPerfil());
         personaEntity.setImgBanner(dtopersona.getImgBanner());
+        personaEntity.setCurriculum(dtopersona.getCurriculum());
         
         personaService.save(personaEntity);
         
